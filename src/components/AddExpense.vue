@@ -50,17 +50,14 @@ export default {
 	methods: {
 		async addExpense() {
 			try {
-				const result = await axios.post('api/expenses', { amount: this.amount }, {
+				const name = this.$store.getters.getUserDetails.name
+				const amount = parseFloat(this.amount).toFixed(2)
+				const result = await axios.post(process.env.VUE_APP_BASEURL + '/expenses', { name, amount }, {
 					headers: { 
 						'Authorization': this.$store.getters.getToken 
 					}
 				})
-				this.$store.commit('addExpense', {
-					id: result.data.id,
-					amount: parseFloat(this.amount).toFixed(2),
-					name: this.$store.getters.getUserDetails.name,
-					created_at: result.data.created_at
-				})
+				this.$store.commit('addExpense', { name, amount, createdAt: result.data.createdAt })
 			} catch (error) {
 				console.error(error)
 			} finally {

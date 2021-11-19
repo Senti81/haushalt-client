@@ -37,10 +37,10 @@ export const store = new Vuex.Store({
       localStorage.removeItem('Authorization')
     },
     addExpense: (state, expense) => state.expensesCurrentMonth.push(expense),
-    deleteExpense: (state, id) => state.expensesCurrentMonth = state.expensesCurrentMonth.filter(item => item.id !== id),
+    deleteExpense: (state, id) => state.expensesCurrentMonth = state.expensesCurrentMonth.filter(item => item._id !== id),
     updateExpense: (state, payload) => 
       state.expensesCurrentMonth = state.expensesCurrentMonth.map(item => 
-        item.id === payload.id ? {...item, amount: payload.amount} : item)
+        item._id === payload.id ? {...item, amount: payload.amount} : item)
   },
   actions: {
     async verifyLogin ({ commit }, credentials) {
@@ -49,6 +49,7 @@ export const store = new Vuex.Store({
         localStorage.setItem('Authorization', response.data.token);
         commit('login', response.data.token)
         commit('setUserDetails', response.data)
+        console.log(response.data)
         return response.status
       } catch (e) {
         localStorage.removeItem('Authorization');

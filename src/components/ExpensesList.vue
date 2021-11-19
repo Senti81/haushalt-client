@@ -28,20 +28,20 @@
               <v-row v-if="item.name === getUserDetails.name || getUserDetails.role === 'ADMIN'">
                 <v-col class="text-center">
                   <UpdateExpense
-                    :id="item.id"
+                    :id="item._id"
                     :amount="item.amount"
                   />
                 </v-col>
                 <v-col>
                   <DeleteExpense                     
-                    :id="item.id"
+                    :id="item._id"
                   />
                 </v-col>
               </v-row>
             </td>
             <td class="text-left">{{ item.name }}</td>
-            <td class="text-left">{{ moment(item.created_at).format('DD.MM.YYYY') }}</td>
-            <td class="text-right">{{ item.amount }} €
+            <td class="text-left">{{ moment(item.createdAt).format('DD.MM.YYYY') }}</td>
+            <td class="text-right">{{ parseFloat(item.amount).toFixed(2) }} €
             </td>                           
           </tr>
         </tbody>

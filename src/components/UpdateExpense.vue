@@ -33,8 +33,8 @@
 import axios from 'axios'
 export default {
 	props : {
-		id: Number,
-		amount: String
+		id: String,
+		amount: Number
 	},
 	data () {
 		return {
@@ -45,7 +45,7 @@ export default {
 	methods: {
 		async update(id) {
 			try {
-				await axios.put(`api/expenses/${id}`, { amount: this.amountToChange }, {
+				await axios.put(process.env.VUE_APP_BASEURL + '/expenses/' + id, { amount: this.amountToChange }, {
 					headers: { 
 						'Authorization': this.$store.getters.getToken 
 					}
