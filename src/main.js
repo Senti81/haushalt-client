@@ -3,6 +3,7 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import moment from 'moment'
 import { store } from './store/store'
+import './registerServiceWorker'
 
 moment.locale('de')
 Vue.config.productionTip = false
