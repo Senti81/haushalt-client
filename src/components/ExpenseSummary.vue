@@ -4,19 +4,28 @@
       dense 
       class="mt-12"
       :class="isCurrentMonth ? 'teal lighten-5' : 'indigo lighten-4'">
-      <div class="overline mx-auto text-center">{{ isCurrentMonth ? moment().format('MMMM YYYY') : moment().subtract(1, 'month').format('MMMM YYYY') }}</div>
+      <thead>
+        <tr>
+          <th class="text-right">
+            {{isCurrentMonth ? moment().format('MMMM') : moment().subtract(1, 'month').format('MMMM')}}
+          </th>
+          <th class="text-left">      
+            {{isCurrentMonth ? moment().format('YYYY') : moment().subtract(1, 'month').format('YYYY')}}      
+          </th>
+        </tr>
+      </thead>
       <tbody>
         <tr>
-          <th class="text-left"><small>{{ this.$store.getters.getUserDetails.name }}</small></th>
-          <th class="text-right"><small>{{calculateSumForUser}} €</small></th>
+          <th class="text-left px-3"><small>{{ this.$store.getters.getUserDetails.name }}</small></th>
+          <th class="text-right px-3"><small>{{calculateSumForUser}} €</small></th>
         </tr>
         <tr>
-          <th class="text-left"><small>Summe</small></th>
-          <th class="text-right"><small>{{calculateTotalSum}} €</small></th>
+          <th class="text-left px-3"><small>Summe</small></th>
+          <th class="text-right px-3"><small>{{calculateTotalSum}} €</small></th>
         </tr>
         <tr>
-          <th class="text-left"><small>Differenz</small></th>
-          <th class="text-right"
+          <th class="text-left px-3"><small>Differenz</small></th>
+          <th class="text-right px-3"
             :class="calculateDifference > 0 ? 'red--text' : 'green--text'">
             <small>{{ (Math.abs(calculateDifference)).toFixed(2) }} €</small>
           </th>
