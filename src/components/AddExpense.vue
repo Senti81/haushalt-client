@@ -57,7 +57,7 @@ export default {
 						'Authorization': this.$store.getters.getToken 
 					}
 				})
-				this.$store.commit('addExpense', { name, amount, createdAt: result.data.createdAt })
+				this.$store.commit('addExpense', result.data)
 			} catch (error) {
 				console.error(error)
 			} finally {

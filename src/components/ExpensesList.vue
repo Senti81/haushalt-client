@@ -22,7 +22,7 @@
         <tbody>
           <tr 
             v-for="item in getExpensesCurrentMonth" 
-            :key="item.id" 
+            :key="item._id" 
           >
             <td>
               <v-row v-if="item.name === getUserDetails.name || getUserDetails.role === 'ADMIN'">

@@ -50,8 +50,6 @@
 </template>
 
 <script>
-// import axios from 'axios';
-
 export default {
 	data() {
 		return {
@@ -67,30 +65,13 @@ export default {
 	},
 	methods: {
 		async submit () {
-			// this.$store.commit('toggleLoading')
       const payload = { name: this.name, password: this.password }
       const status = await this.$store.dispatch('verifyLogin', payload)
       if (status !== 200) {        
-        this.errorMessage = 'Fehler',
+        this.errorMessage = 'Name oder Passwort falsch',
         this.name = '',
         this.password = ''
       }
-      // this.$store.commit('toggleLoading')
-			// this.$store.commit('toggleLoading')
-			// const result = await axios.post(process.env.VUE_APP_BASEURL + '/users/login', {
-			// 	name: this.name.trim(),
-			// 	password: this.password
-			// });
-			// const response = result.data;
-			// if(!response.success) {
-			// 	this.errorMessage = response.message
-			// 	this.name = ''
-			// 	this.password = ''
-			// } else {
-			// 	localStorage.setItem('Authorization', response.token)
-			// 	this.$store.dispatch('validateToken', response.token)
-			// }
-			// this.$store.commit('toggleLoading')
 		}
 	}
 }

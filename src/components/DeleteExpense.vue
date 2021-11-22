@@ -41,17 +41,6 @@ export default {
       } finally {
         this.dialog = false
       }
-
-      // try {
-      //   await axios.delete(`api/expenses/${id}`, {
-      //     headers: { 'Authorization': this.$store.getters.getToken }
-      //   })
-      //   this.$store.commit('deleteExpense', id)        
-      // } catch (error) {
-      //   console.log(error)
-      // } finally {
-      //   this.dialog = false
-      // }
     },
 		reset() {
 			this.dialog = false

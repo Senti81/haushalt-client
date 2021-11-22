@@ -33,7 +33,6 @@ export const store = new Vuex.Store({
     logout(state) {
       state.token = '',
       state.userDetails = {},
-      state.expenses = [],
       localStorage.removeItem('Authorization')
     },
     addExpense: (state, expense) => state.expensesCurrentMonth.push(expense),
@@ -49,7 +48,6 @@ export const store = new Vuex.Store({
         localStorage.setItem('Authorization', response.data.token);
         commit('login', response.data.token)
         commit('setUserDetails', response.data)
-        console.log(response.data)
         return response.status
       } catch (e) {
         localStorage.removeItem('Authorization');
